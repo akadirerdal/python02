@@ -1,15 +1,22 @@
-def ft_first_exception(a):
-    print(f"Input data is '{a}'")
-    
+def input_temperature(temp_str: str) -> int:
+    print(f"Input data is '{temp_str}'")
+    temp = int(temp_str)
+    print(f"Temperature is now {temp}°C\n")
+    return temp
+
+
+def test_temperature() -> None:
     try:
-        int(a)
-        print(f"Temperature is now {a}°C\n")
-    except ValueError:
-        print(f"Caught input_temperature error: invalid literal for int() with base 10: '{a}'\n")
+        input_temperature("25")
+    except ValueError as e:
+        print(f"Caught input_temperature error: {e}\n")
+    try:
+        input_temperature("abc")
+    except ValueError as e:
+        print(f"Caught input_temperature error: {e}\n")
 
 
 if __name__ == "__main__":
     print("=== Garden Temperature ===\n")
-    ft_first_exception(25)
-    ft_first_exception('abc')
+    test_temperature()
     print("All tests completed - program didn't crash!")
